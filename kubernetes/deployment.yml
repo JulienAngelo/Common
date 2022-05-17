@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: common-service-app
+  labels:
+    app: common-service-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: common-service-app
+  template:
+    metadata:
+      labels:
+        app: common-service-app
+    spec:
+      containers:
+        - name: common-service-app
+          image: julienangelo/common:0.0.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
